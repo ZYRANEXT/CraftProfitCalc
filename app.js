@@ -193,8 +193,8 @@ function runAllCalculators(){
 
 function unlockPro(){
   const code=document.getElementById("license")?.value.trim();
-  if(code==="DEMO-PRO-2026"){localStorage.setItem("craftprofitcalc_pro","true");checkUnlock();}
-  else{alert("Invalid demo license. Use DEMO-PRO-2026 for testing.");}
+  if(code==="CPRO-29-LIFETIME-2026"){localStorage.setItem("craftprofitcalc_pro","true");checkUnlock();}
+  else{alert("Invalid license key.");}
 }
 function checkUnlock(){
   const unlocked=localStorage.getItem("craftprofitcalc_pro")==="true";
@@ -218,10 +218,13 @@ function renderProducts(){
   box.innerHTML=saved.length?saved.map(x=>`<div class="result"><span>${escapeHTML(x.name)}<br><small>${x.date}</small></span><strong>${x.price}</strong></div>`).join(""):"<p class='muted'>No saved products yet.</p>";
 }
 function autoUnlockFromStripeSuccess(){
-  const params=new URLSearchParams(window.location.search);
-  if(params.get("checkout")==="success" || params.get("pro")==="unlocked" || window.location.pathname.includes("success.html")){
-    localStorage.setItem("craftprofitcalc_pro","true");
+  const params = new URLSearchParams(window.location.search);
+  const paid = params.get("checkout") === "success";
+  const license = params.get("license") === "CPRO-29-LIFETIME-2026";
+  if (paid && license) {
+    localStorage.setItem("craftprofitcalc_pro", "true");
   }
+}
 }
 document.addEventListener("input",e=>{if(e.target.matches("input,textarea"))runAllCalculators();});
 document.addEventListener("DOMContentLoaded",()=>{autoUnlockFromStripeSuccess();checkUnlock();runAllCalculators();renderProducts();});

@@ -31,3 +31,12 @@ Upgraded top 5 pillar SEO articles with additional strategy, case studies, FAQ, 
 SEO/E-E-A-T upgrade: Added FAQ Schema, Article Schema, Breadcrumb Schema, auto TOC, author cards, author page, strengthened About page, and sitemap updates.
 
 Paid conversion upgrade: Free plan limited to 5 calculations/day. Pro Lifetime unlocks unlimited tools, full AI Advisor, CSV export, and saved estimates. Pro+ remains Coming Soon.
+
+
+Safer unlock update:
+- Pro no longer unlocks just because someone visits success.html.
+- Pro unlock requires success URL with license parameter:
+  https://craftprofitcalc.onrender.com/success.html?checkout=success&license=CPRO-29-LIFETIME-2026
+- License key:
+  CPRO-29-LIFETIME-2026
+- This is still a static-site lightweight license system, not full Stripe webhook verification.
