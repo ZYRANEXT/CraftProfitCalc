@@ -22,12 +22,12 @@
   </div>
   <section class="hero">
     <div class="fade-up">
-      <div class="eyebrow">6 calculators + AI-style pricing advisor</div>
+      <div class="eyebrow">Free trial + Pro Lifetime pricing suite</div>
       <h1>Stop Guessing Your Etsy Prices.</h1>
-      <p>Know your real profit before you sell. Use API-free calculators for Etsy profit, fees, target pricing, break-even, discounts, ad ROI, bundles, and pricing advice.</p>
+      <p>Know your real profit before you sell. Start with 5 free calculations per day. Upgrade once to unlock unlimited Etsy pricing analysis, advanced calculators, CSV export, saved estimates, and the full AI-style Pricing Advisor.</p>
       <div class="hero-actions">
         <a class="button pulse-glow" href="#tools" style="width:auto">Open Free Tools</a>
-        <a class="button secondary" href="/pricing.html" style="width:auto">Get Pro Lifetime</a>
+        <a class="button secondary" href="/pricing.html" style="width:auto">Unlock Unlimited Etsy Pricing Analysis</a>
       </div>
       <div class="hero-badges"><span>✓ No API key</span><span>✓ Runs in browser</span><span>✓ 6 calculators</span><span>✓ AI-style advisor</span></div>
     </div>
@@ -70,11 +70,13 @@
     <strong>Pro Lifetime — $29 One-Time</strong>
     <span>Unlock the full Etsy pricing workflow now. Pro+ Analytics is planned as a future $9/month plan for recurring seller analytics.</span>
     <div class="hero-actions">
-      <a class="button" href="https://buy.stripe.com/cNi8wQ9Q3dDy4FadjN7Vm05" target="_blank" style="width:auto;background:white;color:var(--primary);box-shadow:none">Get Pro Lifetime</a>
+      <a class="button" href="https://buy.stripe.com/cNi8wQ9Q3dDy4FadjN7Vm05" target="_blank" style="width:auto;background:white;color:var(--primary);box-shadow:none">Unlock Unlimited Etsy Pricing Analysis</a>
       <a class="button secondary" href="/pricing.html" style="width:auto">See Pricing</a>
     </div>
   </section>
 
+  <div id="freeLimitBanner" class="limit-banner"></div>
+  <div id="paywallMessage"></div>
   <section id="tools" class="card">
   <h2 class="section-title">6 API-Free Etsy Calculators</h2>
   <p class="section-sub">No API key needed. Every tool runs directly in the browser with transparent formulas.</p>
@@ -82,11 +84,11 @@
   <div class="tool-tabs">
     <button class="tool-tab active" data-tool="tool-profit" onclick="switchTool('tool-profit')">Profit</button>
     <button class="tool-tab" data-tool="tool-fee" onclick="switchTool('tool-fee')">Fees</button>
-    <button class="tool-tab" data-tool="tool-target" onclick="switchTool('tool-target')">Target Price</button>
+    <button class="tool-tab pro-tab" data-tool="tool-target" onclick="switchTool('tool-target')" class="pro-tab">Target Price</button>
     <button class="tool-tab" data-tool="tool-breakeven" onclick="switchTool('tool-breakeven')">Break Even</button>
-    <button class="tool-tab" data-tool="tool-discount" onclick="switchTool('tool-discount')">Discount</button>
-    <button class="tool-tab" data-tool="tool-roi" onclick="switchTool('tool-roi')">Ad ROI</button>
-    <button class="tool-tab" data-tool="tool-bundle" onclick="switchTool('tool-bundle')">Bundle</button>
+    <button class="tool-tab pro-tab" data-tool="tool-discount" onclick="switchTool('tool-discount')" class="pro-tab">Discount</button>
+    <button class="tool-tab pro-tab" data-tool="tool-roi" onclick="switchTool('tool-roi')" class="pro-tab">Ad ROI</button>
+    <button class="tool-tab pro-tab" data-tool="tool-bundle" onclick="switchTool('tool-bundle')" class="pro-tab">Bundle</button>
     <button class="tool-tab" data-tool="tool-advisor" onclick="switchTool('tool-advisor')">AI Advisor</button>
   </div>
 
@@ -222,19 +224,25 @@
 
   <section class="card">
     <h2 class="section-title">Free vs Pro</h2>
-    <p class="section-sub">Free gives sellers the essential calculators. Pro is for sellers who want faster pricing decisions and saved product workflows.</p>
+    <p class="section-sub">Free is for quick checks. Pro Lifetime is for sellers who want unlimited analysis and the full pricing workflow.</p>
     <table class="compare">
-      <thead><tr><th>Feature</th><th>Free</th><th class="pro-highlight">Pro</th></tr></thead>
+      <thead><tr><th>Feature</th><th>Free</th><th class="pro-highlight">Pro Lifetime</th></tr></thead>
       <tbody>
+        <tr><td>Daily calculations</td><td>5/day</td><td class="check pro-highlight">Unlimited</td></tr>
         <tr><td>Profit Calculator</td><td class="check">✓</td><td class="check pro-highlight">✓</td></tr>
         <tr><td>Fee Calculator</td><td class="check">✓</td><td class="check pro-highlight">✓</td></tr>
         <tr><td>Break-Even Calculator</td><td class="check">✓</td><td class="check pro-highlight">✓</td></tr>
-        <tr><td>Target Price Calculator</td><td class="check">✓</td><td class="check pro-highlight">✓</td></tr>
-        <tr><td>AI-style Pricing Advisor</td><td class="check">✓</td><td class="check pro-highlight">✓</td></tr>
+        <tr><td>Target Price Calculator</td><td class="x">✕</td><td class="check pro-highlight">✓</td></tr>
+        <tr><td>Discount Profit Calculator</td><td class="x">✕</td><td class="check pro-highlight">✓</td></tr>
+        <tr><td>Ad ROI Calculator</td><td class="x">✕</td><td class="check pro-highlight">✓</td></tr>
+        <tr><td>Bundle Calculator</td><td class="x">✕</td><td class="check pro-highlight">✓</td></tr>
+        <tr><td>AI Pricing Advisor</td><td>Score only</td><td class="check pro-highlight">Full analysis</td></tr>
         <tr><td>CSV Export</td><td class="x">✕</td><td class="check pro-highlight">✓</td></tr>
-        <tr><td>Save Product Estimates</td><td class="x">✕</td><td class="check pro-highlight">✓</td></tr>
+        <tr><td>Saved Product Estimates</td><td class="x">✕</td><td class="check pro-highlight">✓</td></tr>
+        <tr><td>Price</td><td>$0</td><td class="pro-highlight"><strong>$29 one-time</strong></td></tr>
       </tbody>
     </table>
+    <a class="button pulse-glow" href="https://buy.stripe.com/cNi8wQ9Q3dDy4FadjN7Vm05" target="_blank">Unlock Pro Lifetime - $29</a>
   </section>
 
   <section class="cta-box">

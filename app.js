@@ -225,3 +225,138 @@ function autoUnlockFromStripeSuccess(){
 }
 document.addEventListener("input",e=>{if(e.target.matches("input,textarea"))runAllCalculators();});
 document.addEventListener("DOMContentLoaded",()=>{autoUnlockFromStripeSuccess();checkUnlock();runAllCalculators();renderProducts();});
+
+
+/* Paid conversion upgrade */
+const PRO_PURCHASE_URL = "https://buy.stripe.com/cNi8wQ9Q3dDy4FadjN7Vm05";
+const DAILY_FREE_LIMIT = 5;
+const FREE_TOOLS = new Set(["tool-profit","tool-fee","tool-breakeven"]);
+
+function isProUnlocked(){
+  return localStorage.getItem("craftprofitcalc_pro")==="true";
+}
+
+function todayKey(){
+  return new Date().toISOString().slice(0,10);
+}
+
+function getFreeUsage(){
+  const raw = JSON.parse(localStorage.getItem("craft_free_usage") || "{}");
+  if(raw.date !== todayKey()) return {date: todayKey(), count: 0};
+  return raw;
+}
+
+function setFreeUsage(count){
+  localStorage.setItem("craft_free_usage", JSON.stringify({date: todayKey(), count}));
+}
+
+function updateLimitBanner(){
+  const box = document.getElementById("freeLimitBanner");
+  if(!box) return;
+  if(isProUnlocked()){
+    box.innerHTML = '<strong>Pro Lifetime unlocked.</strong><span>Unlimited Etsy pricing analysis is active on this browser.</span>';
+    return;
+  }
+  const usage = getFreeUsage();
+  const left = Math.max(0, DAILY_FREE_LIMIT - usage.count);
+  box.innerHTML = `<strong>Free plan:</strong><span>${left} of ${DAILY_FREE_LIMIT} free calculations left today.</span><a class="button" style="width:auto;margin:0" href="${PRO_PURCHASE_URL}" target="_blank">Unlock Unlimited - $29</a>`;
+}
+
+function consumeFreeCalculation(){
+  if(isProUnlocked()) return true;
+  const usage = getFreeUsage();
+  if(usage.count >= DAILY_FREE_LIMIT){
+    showLimitReached();
+    return false;
+  }
+  setFreeUsage(usage.count + 1);
+  updateLimitBanner();
+  return true;
+}
+
+function showLimitReached(){
+  const msg = "Free limit reached. Upgrade to Pro Lifetime for unlimited calculations, full AI Advisor, CSV export, and saved product estimates.";
+  const target = document.getElementById("paywallMessage");
+  if(target) target.innerHTML = `<div class="pro-lock-card"><h3>Unlock unlimited Etsy pricing analysis</h3><p>${msg}</p><a class="button pulse-glow" href="${PRO_PURCHASE_URL}" target="_blank">Get Pro Lifetime - $29</a></div>`;
+  else alert(msg);
+}
+
+const originalRunAllCalculators = typeof runAllCalculators === "function" ? runAllCalculators : null;
+runAllCalculators = function(){
+  calculateBasic();calculateFee();calculateTargetPrice();calculateBreakEven();calculateDiscount();calculateROI();calculateBundle();calculatePro();runAdvisor();
+  updateLimitBanner();
+  applyProLocks();
+}
+
+function gatedCalculate(fn){
+  if(!consumeFreeCalculation()) return;
+  fn();
+}
+
+const _calcBasic = calculateBasic;
+calculateBasic = function(){ if(isProUnlocked()) return _calcBasic(); if(!consumeFreeCalculation()) return; return _calcBasic(); }
+const _calcFee = calculateFee;
+calculateFee = function(){ if(isProUnlocked()) return _calcFee(); if(!consumeFreeCalculation()) return; return _calcFee(); }
+const _calcBE = calculateBreakEven;
+calculateBreakEven = function(){ if(isProUnlocked()) return _calcBE(); if(!consumeFreeCalculation()) return; return _calcBE(); }
+
+function applyProLocks(){
+  const proOnlyPanels = ["tool-target","tool-discount","tool-roi","tool-bundle"];
+  const unlocked = isProUnlocked();
+  proOnlyPanels.forEach(id=>{
+    const panel=document.getElementById(id);
+    if(!panel) return;
+    if(!unlocked && !panel.querySelector(".locked-tool-note")){
+      const note=document.createElement("div");
+      note.className="locked-tool-note";
+      note.innerHTML=`<h3>Pro tool locked</h3><p>This tool is included in Pro Lifetime. Unlock all advanced calculators, CSV export, saved estimates, and future Pro tools.</p><a class="button pulse-glow" href="${PRO_PURCHASE_URL}" target="_blank">Get Pro Lifetime - $29</a>`;
+      panel.prepend(note);
+      Array.from(panel.children).forEach((child,i)=>{ if(i>0) child.classList.add("blur-locked"); });
+    }
+    if(unlocked){
+      panel.querySelectorAll(".locked-tool-note").forEach(n=>n.remove());
+      panel.querySelectorAll(".blur-locked").forEach(n=>n.classList.remove("blur-locked"));
+    }
+  });
+}
+
+const _switchTool = switchTool;
+switchTool = function(id){
+  _switchTool(id);
+  if(!isProUnlocked() && !FREE_TOOLS.has(id) && id !== "tool-advisor"){
+    const panel=document.getElementById(id);
+    if(panel) panel.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+  applyProLocks();
+}
+
+const _runAdvisor = runAdvisor;
+runAdvisor = function(){
+  _runAdvisor();
+  if(!document.getElementById("advisor_result")) return;
+  if(isProUnlocked()) return;
+  const n=basicProfitNumbers("advisor_");
+  let score=70;
+  if(n.profit<=0) score-=45;
+  if(n.margin<15) score-=25;
+  else if(n.margin<30) score-=10;
+  score=Math.max(5,Math.min(98,score));
+  document.getElementById("advisor_result").innerHTML = `
+    <div class="advisor-score ${score<45?'advisor-warning':score<72?'advisor-mid':''}">Pricing score · ${score}/100</div>
+    <div class="kpi-grid">
+      <div class="kpi"><span>Estimated profit</span><strong>${money(n.profit)}</strong></div>
+      <div class="kpi"><span>Profit margin</span><strong>${pct(n.margin)}</strong></div>
+      <div class="kpi"><span>Full advisor</span><strong>Pro</strong></div>
+    </div>
+    <div class="pro-lock-card">
+      <h3>Unlock the full AI Pricing Advisor</h3>
+      <p>Upgrade to see why this score was given, recommended selling price, margin analysis, and optimization suggestions.</p>
+      <a class="button pulse-glow" href="${PRO_PURCHASE_URL}" target="_blank">Unlock Full Advisor - $29</a>
+    </div>
+  `;
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  updateLimitBanner();
+  applyProLocks();
+});

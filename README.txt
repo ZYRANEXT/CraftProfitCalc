@@ -29,3 +29,5 @@ SEO update: Expanded blog from 7 to 30 HTML articles. Updated blog.html, homepag
 Upgraded top 5 pillar SEO articles with additional strategy, case studies, FAQ, and audit content.
 
 SEO/E-E-A-T upgrade: Added FAQ Schema, Article Schema, Breadcrumb Schema, auto TOC, author cards, author page, strengthened About page, and sitemap updates.
+
+Paid conversion upgrade: Free plan limited to 5 calculations/day. Pro Lifetime unlocks unlimited tools, full AI Advisor, CSV export, and saved estimates. Pro+ remains Coming Soon.
