@@ -77,23 +77,21 @@
 
   <div id="freeLimitBanner" class="limit-banner"></div>
   <div id="paywallMessage"></div>
-  <section id="tools" class="card">
+  
+<section id="tools" class="card">
   <h2 class="section-title">Free Etsy Calculators</h2>
-  <p class="section-sub">No API key needed. Every tool runs directly in the browser with transparent formulas.</p>
+  <p class="section-sub">Use the free calculators to check basic Etsy profit, fees, break-even price, and a preview of the Pricing Advisor.</p>
 
   <div class="tool-tabs">
-    <button class="tool-tab active" data-tool="tool-profit" onclick="switchTool('tool-profit')">Profit</button>
-    <button class="tool-tab" data-tool="tool-fee" onclick="switchTool('tool-fee')">Fees</button>
-    
-    <button class="tool-tab" data-tool="tool-breakeven" onclick="switchTool('tool-breakeven')">Break Even</button>
-    
-    
-    
-    <button class="tool-tab" data-tool="tool-advisor" onclick="switchTool('tool-advisor')">AI Advisor</button>
+    <button type="button" class="tool-tab active" data-tool="tool-profit" onclick="switchTool('tool-profit')">Profit</button>
+    <button type="button" class="tool-tab" data-tool="tool-fee" onclick="switchTool('tool-fee')">Fees</button>
+    <button type="button" class="tool-tab" data-tool="tool-breakeven" onclick="switchTool('tool-breakeven')">Break Even</button>
+    <button type="button" class="tool-tab" data-tool="tool-advisor" onclick="switchTool('tool-advisor')">AI Advisor Preview</button>
   </div>
 
   <div id="tool-profit" class="tool-panel active">
-    <div class="grid"><div><div class="field"><label for="price">Selling Price ($)</label><input type="number" id="price" value="25" step="0.01"></div>
+    <div class="grid">
+      <div><div class="field"><label for="price">Selling Price ($)</label><input type="number" id="price" value="25" step="0.01"></div>
 <div class="field"><label for="shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="shippingCharged" value="5" step="0.01"></div>
 <div class="field"><label for="productCost">Product Cost ($)</label><input type="number" id="productCost" value="8" step="0.01"></div>
 <div class="field"><label for="shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="shippingCost" value="4" step="0.01"></div>
@@ -103,12 +101,20 @@
 <div class="field"><label for="transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="transactionFee" value="6.5" step="0.1"></div>
 <div class="field"><label for="processingFee">Payment Processing Fee (%)</label><input type="number" id="processingFee" value="3" step="0.1"></div>
 <div class="field"><label for="fixedFee">Payment Fixed Fee ($)</label><input type="number" id="fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="offsiteFee" value="0" step="0.1"></div><button onclick="calculateBasic()">Calculate Profit</button></div>
-    <div class="result-box"><div class="result"><span>Total Revenue</span><strong id="revenue">$0.00</strong></div><div class="result"><span>Total Etsy Fees</span><strong id="fees">$0.00</strong></div><div class="result"><span>Total Costs</span><strong id="costs">$0.00</strong></div><div class="result"><span>Net Profit</span><strong id="profit">$0.00</strong></div><div class="result"><span>Profit Margin</span><strong id="margin">0%</strong></div></div></div>
+<div class="field"><label for="offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="offsiteFee" value="0" step="0.1"></div><button type="button" onclick="calculateBasic()">Calculate Profit</button></div>
+      <div class="result-box">
+        <div class="result"><span>Total Revenue</span><strong id="revenue">$0.00</strong></div>
+        <div class="result"><span>Total Etsy Fees</span><strong id="fees">$0.00</strong></div>
+        <div class="result"><span>Total Costs</span><strong id="costs">$0.00</strong></div>
+        <div class="result"><span>Net Profit</span><strong id="profit">$0.00</strong></div>
+        <div class="result"><span>Profit Margin</span><strong id="margin">0%</strong></div>
+      </div>
+    </div>
   </div>
 
   <div id="tool-fee" class="tool-panel">
-    <div class="grid"><div><div class="field"><label for="fee_price">Selling Price ($)</label><input type="number" id="fee_price" value="25" step="0.01"></div>
+    <div class="grid">
+      <div><div class="field"><label for="fee_price">Selling Price ($)</label><input type="number" id="fee_price" value="25" step="0.01"></div>
 <div class="field"><label for="fee_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="fee_shippingCharged" value="5" step="0.01"></div>
 <div class="field"><label for="fee_productCost">Product Cost ($)</label><input type="number" id="fee_productCost" value="8" step="0.01"></div>
 <div class="field"><label for="fee_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="fee_shippingCost" value="4" step="0.01"></div>
@@ -117,11 +123,18 @@
 <div class="field"><label for="fee_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="fee_transactionFee" value="6.5" step="0.1"></div>
 <div class="field"><label for="fee_processingFee">Payment Processing Fee (%)</label><input type="number" id="fee_processingFee" value="3" step="0.1"></div>
 <div class="field"><label for="fee_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="fee_fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="fee_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="fee_offsiteFee" value="0" step="0.1"></div><button onclick="calculateFee()">Calculate Fees</button></div>
-    <div class="result-box"><div class="result"><span>Total Revenue</span><strong id="fee_totalRevenue">$0.00</strong></div><div class="result"><span>Estimated Fees</span><strong id="fee_totalFees">$0.00</strong></div><div class="result"><span>Effective Fee Rate</span><strong id="fee_feeRate">0%</strong></div></div></div>
+<div class="field"><label for="fee_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="fee_offsiteFee" value="0" step="0.1"></div><button type="button" onclick="calculateFee()">Calculate Fees</button></div>
+      <div class="result-box">
+        <div class="result"><span>Total Revenue</span><strong id="fee_totalRevenue">$0.00</strong></div>
+        <div class="result"><span>Estimated Fees</span><strong id="fee_totalFees">$0.00</strong></div>
+        <div class="result"><span>Effective Fee Rate</span><strong id="fee_feeRate">0%</strong></div>
+      </div>
+    </div>
   </div>
-<div id="tool-breakeven" class="tool-panel">
-    <div class="grid"><div><div class="field"><label for="be_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="be_shippingCharged" value="5" step="0.01"></div>
+
+  <div id="tool-breakeven" class="tool-panel">
+    <div class="grid">
+      <div><div class="field"><label for="be_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="be_shippingCharged" value="5" step="0.01"></div>
 <div class="field"><label for="be_productCost">Product Cost ($)</label><input type="number" id="be_productCost" value="8" step="0.01"></div>
 <div class="field"><label for="be_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="be_shippingCost" value="4" step="0.01"></div>
 <div class="field"><label for="be_packagingCost">Packaging Cost ($)</label><input type="number" id="be_packagingCost" value="1" step="0.01"></div>
@@ -130,15 +143,22 @@
 <div class="field"><label for="be_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="be_transactionFee" value="6.5" step="0.1"></div>
 <div class="field"><label for="be_processingFee">Payment Processing Fee (%)</label><input type="number" id="be_processingFee" value="3" step="0.1"></div>
 <div class="field"><label for="be_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="be_fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="be_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="be_offsiteFee" value="0" step="0.1"></div><button onclick="calculateBreakEven()">Calculate Break Even</button></div>
-    <div class="result-box"><div class="result"><span>Break-Even Item Price</span><strong id="be_price">$0.00</strong></div><div class="result"><span>Break-Even Revenue</span><strong id="be_revenue">$0.00</strong></div><p class="muted" id="be_note"></p></div></div>
+<div class="field"><label for="be_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="be_offsiteFee" value="0" step="0.1"></div><button type="button" onclick="calculateBreakEven()">Calculate Break Even</button></div>
+      <div class="result-box">
+        <div class="result"><span>Break-Even Item Price</span><strong id="be_price">$0.00</strong></div>
+        <div class="result"><span>Break-Even Revenue</span><strong id="be_revenue">$0.00</strong></div>
+        <p class="muted" id="be_note"></p>
+      </div>
+    </div>
   </div>
-<div id="tool-advisor" class="tool-panel">
-    <div class="grid"><div>
-      <div class="field"><label for="advisor_product">Product</label><input id="advisor_product" value="Handmade necklace"></div>
-      <div class="field"><label for="advisor_competitor">Competitor Reference Price ($)</label><input type="number" id="advisor_competitor" value="28" step="0.01"></div>
-      <div class="field"><label for="advisor_targetMargin">Target Margin (%)</label><input type="number" id="advisor_targetMargin" value="30" step="0.1"></div>
-      <div class="field"><label for="advisor_price">Selling Price ($)</label><input type="number" id="advisor_price" value="25" step="0.01"></div>
+
+  <div id="tool-advisor" class="tool-panel">
+    <div class="grid">
+      <div>
+        <div class="field"><label for="advisor_product">Product</label><input id="advisor_product" value="Handmade necklace"></div>
+        <div class="field"><label for="advisor_competitor">Competitor Reference Price ($)</label><input type="number" id="advisor_competitor" value="28" step="0.01"></div>
+        <div class="field"><label for="advisor_targetMargin">Target Margin (%)</label><input type="number" id="advisor_targetMargin" value="30" step="0.1"></div>
+        <div class="field"><label for="advisor_price">Selling Price ($)</label><input type="number" id="advisor_price" value="25" step="0.01"></div>
 <div class="field"><label for="advisor_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="advisor_shippingCharged" value="5" step="0.01"></div>
 <div class="field"><label for="advisor_productCost">Product Cost ($)</label><input type="number" id="advisor_productCost" value="8" step="0.01"></div>
 <div class="field"><label for="advisor_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="advisor_shippingCost" value="4" step="0.01"></div>
@@ -149,12 +169,13 @@
 <div class="field"><label for="advisor_processingFee">Payment Processing Fee (%)</label><input type="number" id="advisor_processingFee" value="3" step="0.1"></div>
 <div class="field"><label for="advisor_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="advisor_fixedFee" value="0.25" step="0.01"></div>
 <div class="field"><label for="advisor_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="advisor_offsiteFee" value="0" step="0.1"></div>
-<div class="field"><label for="advisor_discount">Discount (%)</label><input type="number" id="advisor_discount" value="0" step="0.1"></div>
-      <button onclick="runAdvisor()">Analyze Pricing</button>
+        <button type="button" onclick="runAdvisor()">Analyze Pricing</button>
+      </div>
+      <div class="advisor-box" id="advisor_result"></div>
     </div>
-    <div class="advisor-box" id="advisor_result"></div></div>
   </div>
 </section>
+
 
 
   <section class="card">
