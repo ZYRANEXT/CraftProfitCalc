@@ -1,202 +1,27 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>CraftProfitCalc Pro | Etsy Pricing Tools</title>
-<meta name="description" content="CraftProfitCalc Pro adds saved product estimates, CSV export, and faster pricing workflows for Etsy sellers.">
-<meta name="robots" content="index, follow"><link rel="canonical" href="https://YOUR-DOMAIN.com/pro.html"><link rel="stylesheet" href="/style.css"></head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Get CraftProfitCalc Pro Lifetime</title>
+<meta name="description" content="Unlock CraftProfitCalc Pro Lifetime with a one-time purchase.">
+<link rel="stylesheet" href="/style.css">
+<meta name="robots" content="noindex, follow">
+</head>
 <body>
-<header><div class="nav">
-    <a class="logo logo-row" href="/">
-      <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 16.5L9.5 7l4 7 2.2-3.2L19 16.5H5Z" stroke="white" stroke-width="2" stroke-linejoin="round"/><path d="M8 17h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-      </span>
-      Craft<span>Profit</span>Calc
-    </a>
-    <div class="navlinks">
-      <a href="/">Tools</a>
-      <a href="/blog.html">Blog</a>
-      <a href="/pro.html">Pro</a>
-      <a class="pill" href="/pricing.html">Upgrade</a>
-    </div>
+<header>
+  <div class="nav">
+    <a class="logo logo-row" href="/"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 16.5L9.5 7l4 7 2.2-3.2L19 16.5H5Z" stroke="white" stroke-width="2" stroke-linejoin="round"/><path d="M8 17h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></span>Craft<span>Profit</span>Calc</a>
+    <div class="navlinks"><a href="/">Free Tools</a><a href="/blog.html">Blog</a><a class="pill" href="/pricing.html">Pricing</a></div>
   </div>
   <section class="hero">
-    <div><div class="eyebrow">Pro workflow</div><h1>Price Etsy Products Faster.</h1><p>Unlock saved product estimates and CSV export for the target price calculator and pricing advisor workflow.</p>
-    <div class="hero-actions"><a class="button" href="https://buy.stripe.com/cNi8wQ9Q3dDy4FadjN7Vm05" target="_blank" style="width:auto">Get Pro Lifetime - $29</a><a class="button secondary" href="/#tools" style="width:auto">Use Free Tools</a></div></div>
-    <div class="mock-card floaty"><div class="mock-card-inner"><div class="badge">Pro</div><div class="mock-row mock-profit"><span>CSV Export</span><strong>Ready</strong></div><div class="mock-row"><span>Saved Products</span><strong>Ready</strong></div></div></div>
+    <div>
+      <div class="eyebrow">Pro Lifetime</div>
+      <h1>Unlock the full Etsy pricing toolkit.</h1>
+      <p>Get Target Price, Discount, Ad ROI, Bundle, full AI Pricing Advisor, CSV export, and saved estimates.</p>
+      <div class="hero-actions"><a class="button pulse-glow" href="https://buy.stripe.com/cNi8wQ9Q3dDy4FadjN7Vm05" target="_blank" style="width:auto">Buy Pro Lifetime - $29</a></div>
+    </div>
   </section>
 </header>
-<main>
-  <div class="card locked-only">
-    <span class="badge">Pro Locked</span>
-    <h2 class="section-title">Enter your license key</h2>
-    <p class="section-sub">Enter the license key from your purchase confirmation.</p>
-    <div class="field"><label for="license">License Key</label><input id="license" placeholder="Enter license key"></div>
-    <button onclick="unlockPro()">Unlock Pro</button>
-    <a class="button secondary" href="https://buy.stripe.com/cNi8wQ9Q3dDy4FadjN7Vm05" target="_blank">Get Pro Lifetime - $29</a>
-  </div>
-  <div class="pro-only hidden">
-    <div class="lock"><strong>Pro unlocked.</strong> CSV export and saved product estimates are enabled. <button class="secondary" onclick="lockPro()">Lock Again</button></div>
-    
-<section id="tools" class="card">
-  <h2 class="section-title">6 API-Free Etsy Calculators</h2>
-  <p class="section-sub">No API key needed. Every tool runs directly in the browser with transparent formulas.</p>
-
-  <div class="tool-tabs">
-    <button class="tool-tab active" data-tool="tool-profit" onclick="switchTool('tool-profit')">Profit</button>
-    <button class="tool-tab" data-tool="tool-fee" onclick="switchTool('tool-fee')">Fees</button>
-    <button class="tool-tab" data-tool="tool-target" onclick="switchTool('tool-target')">Target Price</button>
-    <button class="tool-tab" data-tool="tool-breakeven" onclick="switchTool('tool-breakeven')">Break Even</button>
-    <button class="tool-tab" data-tool="tool-discount" onclick="switchTool('tool-discount')">Discount</button>
-    <button class="tool-tab" data-tool="tool-roi" onclick="switchTool('tool-roi')">Ad ROI</button>
-    <button class="tool-tab" data-tool="tool-bundle" onclick="switchTool('tool-bundle')">Bundle</button>
-    <button class="tool-tab" data-tool="tool-advisor" onclick="switchTool('tool-advisor')">AI Advisor</button>
-  </div>
-
-  <div id="tool-profit" class="tool-panel active">
-    <div class="grid"><div><div class="field"><label for="price">Selling Price ($)</label><input type="number" id="price" value="25" step="0.01"></div>
-<div class="field"><label for="shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="shippingCharged" value="5" step="0.01"></div>
-<div class="field"><label for="productCost">Product Cost ($)</label><input type="number" id="productCost" value="8" step="0.01"></div>
-<div class="field"><label for="shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="shippingCost" value="4" step="0.01"></div>
-<div class="field"><label for="packagingCost">Packaging Cost ($)</label><input type="number" id="packagingCost" value="1" step="0.01"></div>
-<div class="field"><label for="adCost">Ad Cost ($)</label><input type="number" id="adCost" value="0" step="0.01"></div>
-<div class="field"><label for="listingFee">Listing Fee ($)</label><input type="number" id="listingFee" value="0.20" step="0.01"></div>
-<div class="field"><label for="transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="transactionFee" value="6.5" step="0.1"></div>
-<div class="field"><label for="processingFee">Payment Processing Fee (%)</label><input type="number" id="processingFee" value="3" step="0.1"></div>
-<div class="field"><label for="fixedFee">Payment Fixed Fee ($)</label><input type="number" id="fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="offsiteFee" value="0" step="0.1"></div><button onclick="calculateBasic()">Calculate Profit</button></div>
-    <div class="result-box"><div class="result"><span>Total Revenue</span><strong id="revenue">$0.00</strong></div><div class="result"><span>Total Etsy Fees</span><strong id="fees">$0.00</strong></div><div class="result"><span>Total Costs</span><strong id="costs">$0.00</strong></div><div class="result"><span>Net Profit</span><strong id="profit">$0.00</strong></div><div class="result"><span>Profit Margin</span><strong id="margin">0%</strong></div></div></div>
-  </div>
-
-  <div id="tool-fee" class="tool-panel">
-    <div class="grid"><div><div class="field"><label for="fee_price">Selling Price ($)</label><input type="number" id="fee_price" value="25" step="0.01"></div>
-<div class="field"><label for="fee_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="fee_shippingCharged" value="5" step="0.01"></div>
-<div class="field"><label for="fee_productCost">Product Cost ($)</label><input type="number" id="fee_productCost" value="8" step="0.01"></div>
-<div class="field"><label for="fee_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="fee_shippingCost" value="4" step="0.01"></div>
-<div class="field"><label for="fee_packagingCost">Packaging Cost ($)</label><input type="number" id="fee_packagingCost" value="1" step="0.01"></div>
-<div class="field"><label for="fee_listingFee">Listing Fee ($)</label><input type="number" id="fee_listingFee" value="0.20" step="0.01"></div>
-<div class="field"><label for="fee_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="fee_transactionFee" value="6.5" step="0.1"></div>
-<div class="field"><label for="fee_processingFee">Payment Processing Fee (%)</label><input type="number" id="fee_processingFee" value="3" step="0.1"></div>
-<div class="field"><label for="fee_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="fee_fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="fee_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="fee_offsiteFee" value="0" step="0.1"></div><button onclick="calculateFee()">Calculate Fees</button></div>
-    <div class="result-box"><div class="result"><span>Total Revenue</span><strong id="fee_totalRevenue">$0.00</strong></div><div class="result"><span>Estimated Fees</span><strong id="fee_totalFees">$0.00</strong></div><div class="result"><span>Effective Fee Rate</span><strong id="fee_feeRate">0%</strong></div></div></div>
-  </div>
-
-  <div id="tool-target" class="tool-panel">
-    <div class="grid"><div><div class="field"><label for="target_productName">Product Name</label><input id="target_productName" value="Handmade Necklace"></div><div class="field"><label for="target_targetProfit">Target Profit ($)</label><input type="number" id="target_targetProfit" value="15" step="0.01"></div><div class="field"><label for="target_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="target_shippingCharged" value="5" step="0.01"></div>
-<div class="field"><label for="target_productCost">Product Cost ($)</label><input type="number" id="target_productCost" value="8" step="0.01"></div>
-<div class="field"><label for="target_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="target_shippingCost" value="4" step="0.01"></div>
-<div class="field"><label for="target_packagingCost">Packaging Cost ($)</label><input type="number" id="target_packagingCost" value="1" step="0.01"></div>
-<div class="field"><label for="target_adCost">Ad Cost ($)</label><input type="number" id="target_adCost" value="0" step="0.01"></div>
-<div class="field"><label for="target_listingFee">Listing Fee ($)</label><input type="number" id="target_listingFee" value="0.20" step="0.01"></div>
-<div class="field"><label for="target_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="target_transactionFee" value="6.5" step="0.1"></div>
-<div class="field"><label for="target_processingFee">Payment Processing Fee (%)</label><input type="number" id="target_processingFee" value="3" step="0.1"></div>
-<div class="field"><label for="target_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="target_fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="target_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="target_offsiteFee" value="0" step="0.1"></div>
-<div class="field"><label for="target_discount">Discount (%)</label><input type="number" id="target_discount" value="0" step="0.1"></div><button onclick="calculateTargetPrice()">Calculate Recommended Price</button><button class="secondary" onclick="exportCSV()">Export CSV</button><button class="secondary" onclick="saveProduct()">Save Product</button></div>
-    <div class="result-box"><div class="result"><span>Recommended Selling Price</span><strong id="target_recommendedPrice">$0.00</strong></div><div class="result"><span>Total Revenue</span><strong id="target_revenue">$0.00</strong></div><div class="result"><span>Estimated Fees</span><strong id="target_fees">$0.00</strong></div><div class="result"><span>Estimated Margin</span><strong id="target_margin">0%</strong></div><h3>Saved Products</h3><div id="savedProducts"></div></div></div>
-  </div>
-
-  <div id="tool-breakeven" class="tool-panel">
-    <div class="grid"><div><div class="field"><label for="be_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="be_shippingCharged" value="5" step="0.01"></div>
-<div class="field"><label for="be_productCost">Product Cost ($)</label><input type="number" id="be_productCost" value="8" step="0.01"></div>
-<div class="field"><label for="be_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="be_shippingCost" value="4" step="0.01"></div>
-<div class="field"><label for="be_packagingCost">Packaging Cost ($)</label><input type="number" id="be_packagingCost" value="1" step="0.01"></div>
-<div class="field"><label for="be_adCost">Ad Cost ($)</label><input type="number" id="be_adCost" value="0" step="0.01"></div>
-<div class="field"><label for="be_listingFee">Listing Fee ($)</label><input type="number" id="be_listingFee" value="0.20" step="0.01"></div>
-<div class="field"><label for="be_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="be_transactionFee" value="6.5" step="0.1"></div>
-<div class="field"><label for="be_processingFee">Payment Processing Fee (%)</label><input type="number" id="be_processingFee" value="3" step="0.1"></div>
-<div class="field"><label for="be_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="be_fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="be_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="be_offsiteFee" value="0" step="0.1"></div><button onclick="calculateBreakEven()">Calculate Break Even</button></div>
-    <div class="result-box"><div class="result"><span>Break-Even Item Price</span><strong id="be_price">$0.00</strong></div><div class="result"><span>Break-Even Revenue</span><strong id="be_revenue">$0.00</strong></div><p class="muted" id="be_note"></p></div></div>
-  </div>
-
-  <div id="tool-discount" class="tool-panel">
-    <div class="grid"><div><div class="field"><label for="disc_price">Selling Price ($)</label><input type="number" id="disc_price" value="25" step="0.01"></div>
-<div class="field"><label for="disc_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="disc_shippingCharged" value="5" step="0.01"></div>
-<div class="field"><label for="disc_productCost">Product Cost ($)</label><input type="number" id="disc_productCost" value="8" step="0.01"></div>
-<div class="field"><label for="disc_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="disc_shippingCost" value="4" step="0.01"></div>
-<div class="field"><label for="disc_packagingCost">Packaging Cost ($)</label><input type="number" id="disc_packagingCost" value="1" step="0.01"></div>
-<div class="field"><label for="disc_adCost">Ad Cost ($)</label><input type="number" id="disc_adCost" value="0" step="0.01"></div>
-<div class="field"><label for="disc_listingFee">Listing Fee ($)</label><input type="number" id="disc_listingFee" value="0.20" step="0.01"></div>
-<div class="field"><label for="disc_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="disc_transactionFee" value="6.5" step="0.1"></div>
-<div class="field"><label for="disc_processingFee">Payment Processing Fee (%)</label><input type="number" id="disc_processingFee" value="3" step="0.1"></div>
-<div class="field"><label for="disc_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="disc_fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="disc_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="disc_offsiteFee" value="0" step="0.1"></div>
-<div class="field"><label for="disc_discount">Discount (%)</label><input type="number" id="disc_discount" value="0" step="0.1"></div><button onclick="calculateDiscount()">Calculate Discount Profit</button></div>
-    <div class="result-box"><div class="result"><span>Discounted Revenue</span><strong id="disc_revenue">$0.00</strong></div><div class="result"><span>Profit After Discount</span><strong id="disc_profit">$0.00</strong></div><div class="result"><span>Margin After Discount</span><strong id="disc_margin">0%</strong></div></div></div>
-  </div>
-
-  <div id="tool-roi" class="tool-panel">
-    <div class="grid"><div><div class="field"><label for="roi_price">Selling Price ($)</label><input type="number" id="roi_price" value="25" step="0.01"></div>
-<div class="field"><label for="roi_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="roi_shippingCharged" value="5" step="0.01"></div>
-<div class="field"><label for="roi_productCost">Product Cost ($)</label><input type="number" id="roi_productCost" value="8" step="0.01"></div>
-<div class="field"><label for="roi_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="roi_shippingCost" value="4" step="0.01"></div>
-<div class="field"><label for="roi_packagingCost">Packaging Cost ($)</label><input type="number" id="roi_packagingCost" value="1" step="0.01"></div>
-<div class="field"><label for="roi_adCost">Ad Cost ($)</label><input type="number" id="roi_adCost" value="0" step="0.01"></div>
-<div class="field"><label for="roi_listingFee">Listing Fee ($)</label><input type="number" id="roi_listingFee" value="0.20" step="0.01"></div>
-<div class="field"><label for="roi_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="roi_transactionFee" value="6.5" step="0.1"></div>
-<div class="field"><label for="roi_processingFee">Payment Processing Fee (%)</label><input type="number" id="roi_processingFee" value="3" step="0.1"></div>
-<div class="field"><label for="roi_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="roi_fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="roi_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="roi_offsiteFee" value="0" step="0.1"></div><button onclick="calculateROI()">Calculate Ad ROI</button></div>
-    <div class="result-box"><div class="result"><span>Profit After Ad Cost</span><strong id="roi_profit">$0.00</strong></div><div class="result"><span>Ad ROI</span><strong id="roi_roi">0%</strong></div><div class="result"><span>Profit Margin</span><strong id="roi_margin">0%</strong></div></div></div>
-  </div>
-
-  <div id="tool-bundle" class="tool-panel">
-    <div class="grid"><div>
-      <div class="field"><label for="bundle_price">Bundle Price ($)</label><input type="number" id="bundle_price" value="45" step="0.01"></div>
-      <div class="field"><label for="bundle_items">Number of Items</label><input type="number" id="bundle_items" value="3" step="1"></div>
-      <div class="field"><label for="bundle_costPerItem">Cost Per Item ($)</label><input type="number" id="bundle_costPerItem" value="6" step="0.01"></div>
-      <div class="field"><label for="bundle_shippingCharged">Shipping Charged ($)</label><input type="number" id="bundle_shippingCharged" value="5" step="0.01"></div>
-      <div class="field"><label for="bundle_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="bundle_shippingCost" value="6" step="0.01"></div>
-      <div class="field"><label for="bundle_packagingCost">Packaging Cost ($)</label><input type="number" id="bundle_packagingCost" value="2" step="0.01"></div>
-      <div class="field"><label for="bundle_listingFee">Listing Fee ($)</label><input type="number" id="bundle_listingFee" value="0.20" step="0.01"></div>
-      <div class="field"><label for="bundle_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="bundle_transactionFee" value="6.5" step="0.1"></div>
-      <div class="field"><label for="bundle_processingFee">Payment Processing Fee (%)</label><input type="number" id="bundle_processingFee" value="3" step="0.1"></div>
-      <div class="field"><label for="bundle_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="bundle_fixedFee" value="0.25" step="0.01"></div>
-      <div class="field"><label for="bundle_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="bundle_offsiteFee" value="0" step="0.1"></div>
-      <button onclick="calculateBundle()">Calculate Bundle Profit</button></div>
-    <div class="result-box"><div class="result"><span>Bundle Profit</span><strong id="bundle_profit">$0.00</strong></div><div class="result"><span>Bundle Margin</span><strong id="bundle_margin">0%</strong></div><div class="result"><span>Profit Per Item</span><strong id="bundle_perItem">$0.00</strong></div></div></div>
-  </div>
-
-  <div id="tool-advisor" class="tool-panel">
-    <div class="grid"><div>
-      <div class="field"><label for="advisor_product">Product</label><input id="advisor_product" value="Handmade necklace"></div>
-      <div class="field"><label for="advisor_competitor">Competitor Reference Price ($)</label><input type="number" id="advisor_competitor" value="28" step="0.01"></div>
-      <div class="field"><label for="advisor_targetMargin">Target Margin (%)</label><input type="number" id="advisor_targetMargin" value="30" step="0.1"></div>
-      <div class="field"><label for="advisor_price">Selling Price ($)</label><input type="number" id="advisor_price" value="25" step="0.01"></div>
-<div class="field"><label for="advisor_shippingCharged">Shipping Charged to Customer ($)</label><input type="number" id="advisor_shippingCharged" value="5" step="0.01"></div>
-<div class="field"><label for="advisor_productCost">Product Cost ($)</label><input type="number" id="advisor_productCost" value="8" step="0.01"></div>
-<div class="field"><label for="advisor_shippingCost">Shipping Cost You Pay ($)</label><input type="number" id="advisor_shippingCost" value="4" step="0.01"></div>
-<div class="field"><label for="advisor_packagingCost">Packaging Cost ($)</label><input type="number" id="advisor_packagingCost" value="1" step="0.01"></div>
-<div class="field"><label for="advisor_adCost">Ad Cost ($)</label><input type="number" id="advisor_adCost" value="0" step="0.01"></div>
-<div class="field"><label for="advisor_listingFee">Listing Fee ($)</label><input type="number" id="advisor_listingFee" value="0.20" step="0.01"></div>
-<div class="field"><label for="advisor_transactionFee">Etsy Transaction Fee (%)</label><input type="number" id="advisor_transactionFee" value="6.5" step="0.1"></div>
-<div class="field"><label for="advisor_processingFee">Payment Processing Fee (%)</label><input type="number" id="advisor_processingFee" value="3" step="0.1"></div>
-<div class="field"><label for="advisor_fixedFee">Payment Fixed Fee ($)</label><input type="number" id="advisor_fixedFee" value="0.25" step="0.01"></div>
-<div class="field"><label for="advisor_offsiteFee">Offsite Ads Fee (%)</label><input type="number" id="advisor_offsiteFee" value="0" step="0.1"></div>
-<div class="field"><label for="advisor_discount">Discount (%)</label><input type="number" id="advisor_discount" value="0" step="0.1"></div>
-      <button onclick="runAdvisor()">Analyze Pricing</button>
-    </div>
-    <div class="advisor-box" id="advisor_result"></div></div>
-  </div>
-</section>
-
-  </div>
-
-  <section class="card">
-    <h2 class="section-title">What's Coming Next</h2>
-    <p class="section-sub">Pro Lifetime is the launch offer. Pro+ Analytics will become the monthly plan when advanced tracking features are ready.</p>
-    <div class="roadmap">
-      <div class="roadmap-item"><strong>Competitor Price Tracking</strong><span>Track reference prices and compare your product positioning.</span></div>
-      <div class="roadmap-item"><strong>Profit Forecast Dashboard</strong><span>Estimate monthly revenue, margin, and break-even scenarios.</span></div>
-      <div class="roadmap-item"><strong>Monthly Analytics Reports</strong><span>Generate monthly profit summaries for seller decisions.</span></div>
-      <div class="roadmap-item"><strong>Advanced AI Pricing Advisor</strong><span>Smarter recommendations based on product type and pricing strategy.</span></div>
-    </div>
-  </section>
-
-</main>
-<footer>
-  <div>© 2026 CraftProfitCalc. Not affiliated with Etsy.</div>
-  <div><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
-</footer>
-<script src="/app.js"></script>
-</body></html>
+</body>
+</html>

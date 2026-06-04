@@ -217,13 +217,7 @@ function renderProducts(){
   const saved=JSON.parse(localStorage.getItem("craft_products")||"[]");
   box.innerHTML=saved.length?saved.map(x=>`<div class="result"><span>${escapeHTML(x.name)}<br><small>${x.date}</small></span><strong>${x.price}</strong></div>`).join(""):"<p class='muted'>No saved products yet.</p>";
 }
-function autoUnlockFromStripeSuccess(){
-  const params = new URLSearchParams(window.location.search);
-  const paid = params.get("checkout") === "success";
-  const license = params.get("license") === "CPRO-29-LIFETIME-2026";
-  if (paid && license) {
-    localStorage.setItem("craftprofitcalc_pro", "true");
-  }
+function autoUnlockFromStripeSuccess(){ }
 }
 }
 document.addEventListener("input",e=>{if(e.target.matches("input,textarea"))runAllCalculators();});
