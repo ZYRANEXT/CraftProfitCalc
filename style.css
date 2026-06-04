@@ -432,3 +432,27 @@ footer a:hover{color:white}
 .kpi span{display:block;color:var(--muted);font-size:13px;font-weight:800;margin-bottom:6px}
 .kpi strong{font-size:22px;color:white}
 @media(max-width:760px){.kpi-grid{grid-template-columns:1fr}}
+
+
+/* Pricing rebuild */
+.launch-banner{
+  margin:28px 0;
+  padding:26px;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at top left,rgba(255,255,255,.18),transparent 34%),
+    linear-gradient(135deg,rgba(255,107,53,.95),rgba(255,155,84,.92));
+  color:white;
+  box-shadow:0 28px 80px rgba(255,107,53,.26);
+  border:1px solid rgba(255,255,255,.18);
+}
+.launch-banner strong{display:block;font-size:30px;letter-spacing:-1px;margin:6px 0}
+.launch-banner span{display:block;opacity:.92;line-height:1.7}
+.plan-note{color:var(--muted);font-size:14px;line-height:1.6}
+.disabled-btn{opacity:.62;cursor:not-allowed!important;filter:grayscale(.2)}
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.roadmap-item{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:20px;padding:18px}
+.roadmap-item strong{display:block;color:white;font-size:17px;margin-bottom:8px}
+.roadmap-item span{color:var(--muted);font-size:14px;line-height:1.6}
+@media(max-width:900px){.roadmap{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.roadmap{grid-template-columns:1fr}}
