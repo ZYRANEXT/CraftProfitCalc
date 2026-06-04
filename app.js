@@ -259,22 +259,14 @@ function updateLimitBanner(){
   box.innerHTML = `<strong>Free plan:</strong><span>${left} of ${DAILY_FREE_LIMIT} free calculations left today.</span><a class="button" style="width:auto;margin:0" href="${PRO_PURCHASE_URL}" target="_blank">Unlock Unlimited - $29</a>`;
 }
 
-function consumeFreeCalculation(){
-  if(isProUnlocked()) return true;
-  const usage = getFreeUsage();
-  if(usage.count >= DAILY_FREE_LIMIT){
-    showLimitReached();
-    return false;
-  }
-  setFreeUsage(usage.count + 1);
+function consumeFreeCalculation(){ return true; }
+setFreeUsage(usage.count + 1);
   updateLimitBanner();
   return true;
 }
 
-function showLimitReached(){
-  const msg = "Free limit reached. Upgrade to Pro Lifetime for unlimited calculations, full AI Advisor, CSV export, and saved product estimates.";
-  const target = document.getElementById("paywallMessage");
-  if(target) target.innerHTML = `<div class="pro-lock-card"><h3>Unlock unlimited Etsy pricing analysis</h3><p>${msg}</p><a class="button pulse-glow" href="${PRO_PURCHASE_URL}" target="_blank">Get Pro Lifetime - $29</a></div>`;
+function showLimitReached(){ return; }
+</p><a class="button pulse-glow" href="${PRO_PURCHASE_URL}" target="_blank">Get Pro Lifetime - $29</a></div>`;
   else alert(msg);
 }
 
@@ -297,16 +289,8 @@ calculateFee = function(){ if(isProUnlocked()) return _calcFee(); if(!consumeFre
 const _calcBE = calculateBreakEven;
 calculateBreakEven = function(){ if(isProUnlocked()) return _calcBE(); if(!consumeFreeCalculation()) return; return _calcBE(); }
 
-function applyProLocks(){
-  const proOnlyPanels = ["tool-target","tool-discount","tool-roi","tool-bundle"];
-  const unlocked = isProUnlocked();
-  proOnlyPanels.forEach(id=>{
-    const panel=document.getElementById(id);
-    if(!panel) return;
-    if(!unlocked && !panel.querySelector(".locked-tool-note")){
-      const note=document.createElement("div");
-      note.className="locked-tool-note";
-      note.innerHTML=`<h3>Pro tool locked</h3><p>This tool is included in Pro Lifetime. Unlock all advanced calculators, CSV export, saved estimates, and future Pro tools.</p><a class="button pulse-glow" href="${PRO_PURCHASE_URL}" target="_blank">Get Pro Lifetime - $29</a>`;
+function applyProLocks(){ return; }
+" target="_blank">Get Pro Lifetime - $29</a>`;
       panel.prepend(note);
       Array.from(panel.children).forEach((child,i)=>{ if(i>0) child.classList.add("blur-locked"); });
     }
@@ -356,4 +340,23 @@ runAdvisor = function(){
 document.addEventListener("DOMContentLoaded",()=>{
   updateLimitBanner();
   applyProLocks();
+});
+
+
+/* Free site fixed tab/buttons */
+function switchTool(id){
+  document.querySelectorAll(".tool-tab").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".tool-panel").forEach(p=>p.classList.remove("active"));
+  const btn=document.querySelector(`[data-tool="${id}"]`);
+  const panel=document.getElementById(id);
+  if(btn)btn.classList.add("active");
+  if(panel)panel.classList.add("active");
+  calculateBasic();
+  calculateFee();
+  calculateBreakEven();
+  runAdvisor();
+}
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".blur-locked").forEach(el=>el.classList.remove("blur-locked"));
+  document.querySelectorAll(".locked-tool-note").forEach(el=>el.remove());
 });
